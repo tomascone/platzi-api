@@ -18,6 +18,11 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->float('price');
             $table->foreignId('category_id')->onDelete('cascade');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
